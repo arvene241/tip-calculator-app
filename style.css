@@ -1,0 +1,304 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap");
+
+:root {
+  --clr-primary: hsl(172, 67%, 45%);
+  --very-dark-cyan: hsl(183, 100%, 15%);
+  --dark-grayish-cyan: hsl(186, 14%, 43%);
+  --dark-grayish-cyan2: hsl(184, 14%, 56%);
+  --light-grayish-cyan: hsl(185, 41%, 84%);
+  --light-grayish-cyan2: hsl(189, 41%, 97%);
+  --clr-white: hsl(0, 0%, 100%);
+}
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Space Mono", monospace;
+}
+
+body {
+  background-color: var(--light-grayish-cyan);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100vh;
+  font-size: 14px;
+  color: var(--dark-grayish-cyan2);
+  font-weight: 700;
+  overflow-y: hidden;
+}
+
+header {
+  font-weight: 600;
+  font-size: 24px;
+  letter-spacing: 5px;
+  text-align: center;
+  text-transform: uppercase;
+  color: var(--very-dark-cyan);
+  margin-bottom: 50px;
+}
+
+.main-container {
+  width: 800px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  grid-template-areas: "left right";
+  background-color: var(--clr-white);
+  border-radius: 15px;
+  padding: 40px;
+  column-gap: 20px;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"]:hover,
+input[type="number"]:focus {
+  outline: none;
+  border: solid 3px var(--clr-primary);
+}
+
+#billVal.active,
+#people.active,
+.custom.active {
+  outline: none;
+  border: solid 3px red !important;
+}
+
+.text-h {
+  display: flex;
+  justify-content: space-between;
+}
+
+.error-message1,
+.error-message2 {
+  display: none;
+  color: red;
+}
+
+.error-message1.active,
+.error-message2.active {
+  display: flex;
+}
+
+.input-container {
+  grid-area: left;
+  background-color: var(--clr-white);
+}
+
+.bill,
+.tip {
+  margin-bottom: 30px;
+}
+
+.bill,
+.people {
+  position: relative;
+}
+
+.bill input,
+.people input {
+  position: relative;
+  border: none;
+  background-color: var(--light-grayish-cyan2);
+  width: 350px;
+  height: 40px;
+  border-radius: 5px;
+  font-size: 24px;
+  text-align: right;
+  color: var(--very-dark-cyan);
+  font-weight: 700;
+  padding-right: 10px;
+}
+
+.bill input::placeholder,
+.people input::placeholder {
+  color: var(--dark-grayish-cyan2);
+  text-align: right;
+}
+
+.bill span,
+.people span {
+  position: absolute;
+  left: 10px;
+  z-index: 2;
+  font-size: 24px;
+  font-weight: 400;
+}
+
+.tip {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  grid-template-areas:
+    "tip tip tip"
+    "five ten fifteen"
+    "twenty5 fifty custom";
+  gap: 10px;
+}
+
+.tip p {
+  grid-area: tip;
+}
+
+.tip-val {
+  cursor: pointer;
+}
+
+button.tip-val:hover,
+button.tip-val:focus {
+  background-color: var(--clr-primary);
+  color: var(--very-dark-cyan);
+}
+
+.tip input,
+.tip button {
+  height: 40px;
+  background-color: var(--very-dark-cyan);
+  color: var(--clr-white);
+  border: none;
+  border-radius: 5px;
+  font-weight: 600;
+  font-size: 20px;
+  overflow: hidden;
+}
+
+.tip button:nth-of-type(1) {
+  grid-area: five;
+}
+
+.tip button:nth-of-type(2) {
+  grid-area: ten;
+}
+
+.tip button:nth-of-type(3) {
+  grid-area: fifteen;
+}
+
+.tip button:nth-of-type(4) {
+  grid-area: twenty5;
+}
+
+.tip button:nth-of-type(5) {
+  grid-area: fifty;
+}
+
+.tip .custom {
+  background-color: var(--light-grayish-cyan2);
+  color: var(--dark-grayish-cyan);
+  grid-area: custom;
+  text-align: center;
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 30px 30px;
+}
+
+.top .text p:nth-of-type(1) {
+  font-size: 14px;
+  color: var(--clr-white);
+}
+
+.top .text p:nth-of-type(2) {
+  font-weight: 600;
+  font-size: 11px;
+  color: var(--dark-grayish-cyan2);
+}
+
+.top span {
+  font-weight: 700;
+  font-size: 2.2rem;
+  color: var(--clr-primary);
+}
+
+.result-container {
+  grid-area: right;
+  background-color: var(--very-dark-cyan);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+  padding-top: 20px;
+}
+
+.reset {
+  position: absolute;
+  bottom: 20px;
+}
+
+.reset-btn {
+  font-weight: 700;
+  font-size: 1rem;
+  text-transform: uppercase;
+  border-radius: 3px;
+  background-color: var(--clr-primary);
+  border: none;
+  color: var(--very-dark-cyan);
+  width: 250px;
+  height: 40px;
+  cursor: pointer;
+}
+
+.reset-btn:hover,
+.reset-btn:focus {
+  background-color: var(--light-grayish-cyan);
+}
+
+@media screen and (max-width: 800px) {
+  body {
+    overflow-y: scroll;
+    height: 100%;
+  }
+
+  header {
+    margin-top: 30px;
+  }
+
+  .main-container {
+    display: flex;
+    flex-direction: column;
+    border-radius: 30px;
+    padding: 40px;
+    row-gap: 20px;
+    width: 100%;
+  }
+
+  .bill input,
+  .people input {
+    width: 100%;
+  }
+
+  .result-container {
+    height: 250px;
+  }
+
+  .reset-btn {
+    width: 70vw;
+  }  
+}
+
+@media screen and (max-width: 500px) {
+  .tip {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    grid-template-areas:
+      "tip tip"
+      "five ten"
+      "fifteen twenty5"
+      "fifty custom";
+    gap: 10px;
+  }
+
+}
